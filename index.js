@@ -13,7 +13,9 @@ app.get('/', (req, res) => {
 })
 
 io.on( 'connection', (socket) => {
-  console.log('a user connected');
+  socket.on("chat-masuk", (msg) => {
+    io.emit("chat-keluar", msg);
+  })
 })
 
 http.listen(3000, () => {
